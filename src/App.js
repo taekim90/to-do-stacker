@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import ToDoList from './ToDoList';
+import Schedule from './Schedule';
 
-function App() {
+function App({ toDoList }) {
+  const [toDo, setToDo] = useState({
+    toDoList: []
+  })
+
+  const clearToDo = () => {
+    setToDo({ toDoList: [] })
+  }
+
+  const addToDo = (toDoItem) => {
+    console.log('adding to To Do List')
+    let newToDoList = toDo.toDoList
+    newToDoList.unshift(toDoItem)
+    setToDo({ toDoList: newToDoList })
+  } 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>To Do List</h1>
+      <main>
+        <ToDoList toDo={toDoList} addToDo={addToDo}/>
+        <Schedule toDoList={toDo.toDoList} clearToDo={clearToDo}/>
+      </main>
+    </>
   );
 }
 

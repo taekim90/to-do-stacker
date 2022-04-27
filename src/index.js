@@ -4,10 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const toDoList = [
+  {name: 'Wake Up'},
+  {name: 'Eat Breakfast'},
+  {name: 'Eat Lunch'},
+  {name: 'Eat Dinner'},
+  {name: 'Study'},
+  {name: 'Workout'},
+  {name: 'Sleep'},
+  {name: 'Watch Netflix'},
+  {name: 'Work'},
+]
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App toDoList={toDoList} />
   </React.StrictMode>
 );
 
